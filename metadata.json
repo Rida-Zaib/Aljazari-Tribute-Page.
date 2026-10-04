@@ -1,0 +1,6 @@
+{
+  "name": "Al-Jazari: The Book of Ingenious Devices",
+  "description": "An interactive vintage illuminated-manuscript booklet celebrating Ismail al-Jazari (1136–1206), the pioneering 12th-century Muslim engineer, featuring 3D realistic page-turning mechanics, historical folios, synthesized paper audio, and mechanical animations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
