@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F2CB6E"/>
+      <stop offset="100%" stop-color="#C59333"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="32" cy="32" r="31" fill="#133D3B"/>
+  <circle cx="32" cy="32" r="30.3" fill="none" stroke="url(#gold)" stroke-width="1.6"/>
+
+  <!-- open book, simple and clear at small sizes -->
+  <path d="M32 20
+           C 28 17, 20 15.5, 14 16.5
+           L 14 42
+           C 20 41, 28 42.5, 32 46
+           Z"
+        fill="#FAF6ED" stroke="url(#gold)" stroke-width="1.4"/>
+  <path d="M32 20
+           C 36 17, 44 15.5, 50 16.5
+           L 50 42
+           C 44 41, 36 42.5, 32 46
+           Z"
+        fill="#FAF6ED" stroke="url(#gold)" stroke-width="1.4"/>
+
+  <!-- spine -->
+  <path d="M32 20 L32 46" stroke="#9E2A2B" stroke-width="2"/>
+
+  <!-- text lines, left page -->
+  <g stroke="#C59333" stroke-width="1.3" stroke-linecap="round">
+    <path d="M18 23 L27 21.5"/>
+    <path d="M18 28 L28 26.5"/>
+    <path d="M18 33 L28 32"/>
+    <path d="M18 38 L27 37.5"/>
+  </g>
+  <!-- text lines, right page -->
+  <g stroke="#C59333" stroke-width="1.3" stroke-linecap="round">
+    <path d="M46 23 L37 21.5"/>
+    <path d="M46 28 L36 26.5"/>
+    <path d="M46 33 L36 32"/>
+    <path d="M46 38 L37 37.5"/>
+  </g>
+
+  <!-- small gear badge on the right page, nodding to the mechanisms -->
+  <g transform="translate(40,33)">
+    <circle r="4.6" fill="url(#gold)" stroke="#6E4A14" stroke-width="0.6"/>
+    <circle r="1.7" fill="#133D3B"/>
+    <g stroke="url(#gold)" stroke-width="1.4">
+      <path d="M0 -6.4 L0 -4.8"/>
+      <path d="M0 4.8 L0 6.4"/>
+      <path d="M-6.4 0 L-4.8 0"/>
+      <path d="M6.4 0 L4.8 0"/>
+    </g>
+  </g>
+</svg>

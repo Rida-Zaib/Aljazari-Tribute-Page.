@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --parchment-light: #FAF6ED;
+    --parchment-base: #F3EBD9;
+    --parchment-dark: #E4D7BE;
+    --parchment-edge: #C8B697;
+    --ink-primary: #2B2118;
+    --ink-secondary: #5C4A38;
+    --teal-deep: #133D3B;
+    --teal-accent: #1C5A57;
+    --gold-antique: #C59333;
+    --gold-bright: #E4B24B;
+    --red-rubric: #9E2A2B;
+    --red-subtle: #C44546;
+  }
+
+  body {
+    font-family: 'EB Garamond', Georgia, serif;
+    background-color: #0B1012;
+    color: var(--ink-primary);
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Typography */
+.font-display {
+  font-family: 'Cinzel', serif;
+}
+
+.font-decorative {
+  font-family: 'Cinzel Decorative', serif;
+}
+
+.font-body {
+  font-family: 'EB Garamond', Georgia, serif;
+}
+
+.font-arabic {
+  font-family: 'Amiri', 'Scheherazade New', serif;
+}
+
+/* =========================================================
+   3D BOOK FLIP MECHANICS (Rigorous 3D Chain)
+   ========================================================= */
+
+.book-stage {
+  perspective: 2800px;
+  perspective-origin: 50% 50%;
+  transform-style: preserve-3d;
+}
+
+.book-container {
+  transform-style: preserve-3d;
+  position: relative;
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* When book is closed on front cover or back cover, suppress two-page spread */
+.book-container.is-closed-cover,
+.book-container.is-closed-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.book-container.is-closed-cover .second-panel,
+.book-container.is-closed-cover .spread-left-panel,
+.book-container.is-closed-back .second-panel,
+.book-container.is-closed-back .spread-right-panel {
+  display: none !important;
+}
+
+/* Spread Leaves: Left & Right Half Positioning */
+.book-page-left {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  transform-origin: right center;
+  transform-style: preserve-3d;
+  transition: transform 800ms cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, z-index;
+}
+
+.book-page-right {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: transform 800ms cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, z-index;
+}
+
+/* Active turn elevated z-index */
+.book-page-left.is-active-turn,
+.book-page-right.is-active-turn {
+  z-index: 100 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book-page-left,
+  .book-page-right {
+    transition-duration: 350ms;
+  }
+}
+
+/* Continuous Flower Rosette Spin */
+@keyframes rosetteSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-rosette-spin {
+  animation: rosetteSpin 60s linear infinite;
+}
+
+/* Spine Crease Shadows for Realistic Open Book */
+.spine-shadow-left {
+  box-shadow: inset -22px 0 30px -8px rgba(18, 10, 5, 0.6), inset 0 0 10px rgba(0,0,0,0.08);
+}
+
+.spine-shadow-right {
+  box-shadow: inset 22px 0 30px -8px rgba(18, 10, 5, 0.6), inset 0 0 10px rgba(0,0,0,0.08);
+}
+
+/* Manuscript Parchment Style */
+.parchment-bg {
+  background-color: var(--parchment-base);
+  background-image: 
+    radial-gradient(ellipse at 50% 50%, rgba(255, 250, 240, 0.88) 0%, rgba(235, 222, 198, 0.96) 100%),
+    radial-gradient(circle at 0% 0%, rgba(197, 147, 51, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(158, 42, 43, 0.06) 0%, transparent 60%);
+}
+
+.parchment-cover {
+  background: radial-gradient(circle at center, #194644 0%, #0F2D2C 65%, #081B1A 100%);
+}
+
+/* Custom Scrollbar */
+.manuscript-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+.manuscript-scroll::-webkit-scrollbar-track {
+  background: rgba(197, 147, 51, 0.1);
+  border-radius: 4px;
+}
+.manuscript-scroll::-webkit-scrollbar-thumb {
+  background: rgba(197, 147, 51, 0.4);
+  border-radius: 4px;
+}
+.manuscript-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(197, 147, 51, 0.7);
+}
